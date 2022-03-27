@@ -1,58 +1,93 @@
-.card {
-  /* Add shadows to create the "card" effect */
+/* .card {
+  Add shadows to create the "card" effect
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
   padding: 2% 3%;
   background-color: rgb(163, 146, 156);
 }
 
-/* On mouse-over, add a deeper shadow */
+On mouse-over, add a deeper shadow
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* Add some padding inside the card container */
+Add some padding inside the card container
 .card-container {
   padding: 2px 16px;
+} */
+
+@import url(./card.css);
+.grid-container {
+  height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  background-color: #001525;
 }
 
-.item1 {
+.header {
   grid-area: header;
-  height: 60px;
   text-align: center;
 }
-.item3 {
+.main {
   grid-area: main;
+  background-color: aliceblue;
+  overflow: auto;
+  padding: 20px 10px 10px;
 }
-.item5 {
+.footer {
   grid-area: footer;
-  height: 40px;
+  text-align: center;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-areas:
-    "header header header header header header"
-    "main main main main main main"
-    "footer footer footer footer footer footer";
-  gap: 10px;
-  background-color: #2196f3;
-  padding: 10px;
+.grid-container >.header {
+  padding: var(--header-footer-spacing);
+  background-color: rgb(91, 122, 133);
 }
 
-.view {
+.grid-container>.footer {
+  padding: var(--header-footer-spacing);
+  background-color: rgb(91, 122, 133);
+}
+/* Screen size less than 640px */
+.wrapper {
   display: grid;
   grid-gap: 20px;
-  grid-template-columns: auto auto auto;
-  background-color: #2196f3;
-  padding: 3%;
+  grid-template-columns: auto;
 }
 
-.grid-item {
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
-  text-align: center;
-  border-radius: 5px;
-  padding: 5%;
-  
+/* Screen size between 640px and 720px */
+@media only screen and (min-width: 640px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto auto;
+  }
 }
+
+/* Screen size greater than 720px */
+
+@media only screen and (min-width: 720px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto auto auto;
+  }
+}
+
+/* Screen size greater than 1024px */
+
+@media only screen and (min-width: 1024px) {
+  .wrapper {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: auto auto auto auto auto;
+  }
+}
+
+
