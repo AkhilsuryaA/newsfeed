@@ -7,7 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   --main-spacing: 15px 5px 10px 5px;
-  --header-footer-spacing: 10px 5px;  
+  --header-footer-spacing: 10px 40px;  
 }
 
 code {

@@ -18,17 +18,43 @@ function View() {
       .catch((err) => console.log(err));
   }, []);
 
+  const submit = async (param) => {
+    console.log(param);
+  };
+
   return (
     <>
       <div className="grid-container">
         <div className="header">
-          <h1>NEWS FEED</h1>
+          <div>
+            <h3>NEWS FEED</h3>
+          </div>
+          <div className="container_search">
+            <form className="nosubmit">
+              <input
+                className="nosubmit"
+                type="search"
+                placeholder="Search..."
+              />
+            </form>
+          </div>
         </div>
         <div className="main">
+          <div className="main_header">
+            <h1>The news feed you deserve...</h1>
+          </div>
           <div className="wrapper">
-            {feedList.map((item, i) => (
+            {feedList.length > 0 ?
+            feedList.map((item, i) => (
               <div className="grid-item" key={item.publishedAt}>
-                <ImageCard author={item.author} url={item.url} src={item.urlToImage} title={item.title} description={checkStringForLink(item.description)} />
+                <ImageCard
+                  source={item.source && item.source.name}
+                  author={item.author}
+                  url={item.url}
+                  src={item.urlToImage}
+                  title={item.title}
+                  description={checkStringForLink(item.description)}
+                />
                 {/* <h4>
                   <strong>{item.title}</strong>
                 </h4>
@@ -47,7 +73,11 @@ function View() {
                   <p>{checkStringForLink(item.description)}</p>
                 </div> */}
               </div>
-            ))}
+            ))
+            : 
+            <div>
+              No Data
+          </div>}
           </div>
         </div>
 

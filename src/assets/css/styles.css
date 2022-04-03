@@ -33,13 +33,18 @@ Add some padding inside the card container
 .header {
   grid-area: header;
   text-align: center;
+  display: block;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .main {
   grid-area: main;
-  background-color: aliceblue;
+  background-color: rgb(73, 97, 248);
   overflow: auto;
   padding: 20px 10px 10px;
 }
+
 .footer {
   grid-area: footer;
   text-align: center;
@@ -47,18 +52,71 @@ Add some padding inside the card container
 
 .grid-container >.header {
   padding: var(--header-footer-spacing);
-  background-color: rgb(91, 122, 133);
+  background-color: rgb(47, 72, 233);
+  color: #fff;
 }
 
 .grid-container>.footer {
   padding: var(--header-footer-spacing);
-  background-color: rgb(91, 122, 133);
+  background-color: rgb(47, 72, 233);
+  color: #fff;
+
 }
 /* Screen size less than 640px */
 .wrapper {
   display: grid;
   grid-gap: 20px;
   grid-template-columns: auto;
+}
+
+.main_header {
+  padding: var(--header-footer-spacing);
+  align-items: center;
+  text-align: center;
+  color : #fff;
+  text-transform: capitalize;
+}
+
+.container_search {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}
+
+form {
+  color: #fff;
+  display: flex;
+  padding: 2px;
+  border: 1px solid currentColor;
+  border-radius: 5px;
+}
+
+input[type="search"] {
+  border: none;
+  background: transparent;
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 14px;
+  color: inherit;
+  border: 1px solid transparent;
+  border-radius: inherit;
+}
+
+input[type="search"]::placeholder {
+  color: #fff;
+}
+
+form.nosubmit {
+ border: none;
+ padding: 0;
+}
+
+input.nosubmit {
+  border: 1px solid #fff;
+  width: 100%;
+  padding: 9px 4px 9px 40px;
+   background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
 }
 
 /* Screen size between 640px and 720px */
@@ -68,6 +126,15 @@ Add some padding inside the card container
     grid-gap: 20px;
     grid-template-columns: auto auto;
   }
+
+  .header {
+    grid-area: header;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
 }
 
 /* Screen size greater than 720px */
@@ -78,6 +145,13 @@ Add some padding inside the card container
     grid-gap: 20px;
     grid-template-columns: auto auto auto;
   }
+  .header {
+    grid-area: header;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 }
 
 /* Screen size greater than 1024px */
@@ -86,7 +160,14 @@ Add some padding inside the card container
   .wrapper {
     display: grid;
     grid-gap: 20px;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto;
+  }
+  .header {
+    grid-area: header;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
