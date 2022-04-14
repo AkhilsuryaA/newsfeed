@@ -2,25 +2,47 @@ import React, { useEffect, useState } from "react";
 import checkStringForLink from "../common/helper_functions";
 import { NavLink } from "react-router-dom";
 import ImageCard from "../ImageCard";
+import { API_KEY } from "../../config";
 
 function View() {
   const [feedList, setFeedlist] = useState([]);
+  const [SearchTerm, setSearchTerm] = useState("");
+
+  const defaultApi = `https://newsapi.org/v2/everything?q=in&apiKey=${API_KEY}`;
+
   useEffect(() => {
-    fetch(
-      "https://newsapi.org/v2/everything?q=bitcoin&apiKey=ee90db4b0ba640ffa80f0b69b60c48e3"
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        let arr = data.articles && data.articles.slice(0, 50);
-        setFeedlist(arr);
-      })
-      .catch((err) => console.log(err));
+    getNewsFeeds(SearchTerm);
   }, []);
 
-  const submit = async (param) => {
-    console.log(param);
+  const getNewsFeeds = async (param) => {
+    let api = '';
+    if(param) {
+      api = `https://newsapi.org/v2/everything?q=${param}&apiKey=${API_KEY}`;
+    }
+    else {
+      api = defaultApi;
+    }
+    console.log(param,api);
+    try {
+      fetch(
+        api
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          let arr = data.articles && data.articles.slice(0, 50);
+          setFeedlist(arr);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  const submit = (params) => {
+    params.preventDefault();
+    getNewsFeeds(SearchTerm);
+  }
 
   return (
     <>
@@ -30,11 +52,12 @@ function View() {
             <h3>NEWS FEED</h3>
           </div>
           <div className="container_search">
-            <form className="nosubmit">
+            <form className="nosubmit" onSubmit={submit}>
               <input
                 className="nosubmit"
                 type="search"
                 placeholder="Search..."
+                onChange={(e)=>setSearchTerm(e.target.value)}
               />
             </form>
           </div>
@@ -42,6 +65,8 @@ function View() {
         <div className="main">
           <div className="main_header">
             <h1>The news feed you deserve...</h1>
+            <h2>Showing results for {SearchTerm? SearchTerm:
+              'Top headlines India'}</h2>
           </div>
           <div className="wrapper">
             {feedList.length > 0 ?

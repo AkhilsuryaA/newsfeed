@@ -1,5 +1,5 @@
 const checkStringForLink = (str) => {
-  let sr = str.includes("<a") && str.includes("</a>");
+  let sr = str && str.includes("<a") && str.includes("</a>");
   if (sr) {
     let val = str;
     let start = val.indexOf("<a");
