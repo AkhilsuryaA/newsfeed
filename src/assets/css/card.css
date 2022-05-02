@@ -8,14 +8,14 @@
   margin: 0;
 }
 
-body {
+/* body {
   font-family: "Quicksand", sans-serif;
   display: grid;
   place-items: center;
   height: 100vh;
   background: #7f7fd5;
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
-}
+} */
 
 .container {
   display: flex;
@@ -41,8 +41,7 @@ img {
   box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
   border-radius: 1em;
   background: #ECE9E6;
-  background: linear-gradient(to right, #FFFFFF, #ECE9E6);
-
+  background: linear-gradient(to right, #fdefef, #ffd5ac);
 }
 
 
