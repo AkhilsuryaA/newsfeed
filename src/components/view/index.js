@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import checkStringForLink from "../common/helper_functions";
-import { NavLink } from "react-router-dom";
-import ImageCard from "../ImageCard";
 import { API_KEY } from "../../config";
+import checkStringForLink from "../common/helper_functions";
+import ImageCard from "../ImageCard";
 
 function View() {
   const [feedList, setFeedlist] = useState([]);

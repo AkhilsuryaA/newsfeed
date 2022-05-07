@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import checkStringForLink from "../common/helper_functions";
-import { NavLink } from "react-router-dom";
-import ImageCard from "../ImageCard";
 import { API_KEY } from "../../config";
+import checkStringForLink from "../common/helper_functions";
+import ImageCard from "../ImageCard";
 import "./styles.scss";
 
 const Footer = () => {
@@ -22,6 +21,7 @@ export default function App() {
   const defaultApi = `https://newsapi.org/v2/everything?q=in&apiKey=${API_KEY}`;
 
   useEffect(() => {
+    setFeedlist([]);
     getNewsFeeds(SearchTerm);
   }, []);
 
@@ -39,17 +39,22 @@ export default function App() {
         .then((response) => response.json())
         .then((data) => {
           //console.log(data);
-          let arr = data.articles && data.articles.slice(0, 50);
-          setFeedlist(arr);
-          setLoading(false);
+          if (data && data.articles && data.articles.length > 0) {
+            let arr = data.articles && data.articles.slice(0, 50);
+            setFeedlist(arr);
+            setLoading(false);
+          } else {
+            setFeedlist([]);
+          }
         })
         .catch((err) => {
+          setFeedlist([]);
           setLoading(false);
-          //console.log(err);
+          console.log(err);
         });
     } catch (err) {
       setLoading(false);
-      //console.log(err);
+      console.log(err);
     }
   };
 
